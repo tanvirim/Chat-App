@@ -78,14 +78,11 @@ export default function Register() {
         if (data.status === false) {
           toast.error(data.msg, toastOptions);
         }
-        if (data.status === true) {
-          // localStorage.setItem(
-          //   process.env.REACT_APP_LOCALHOST_KEY,
-          //   JSON.stringify(data.user)
-          // );
+        // if (data.status === true) {
+        //   // localStorage.setItem("chat-app-user", JSON.stringify(data.user))
           
-          navigate("/");
-        }
+        // }
+        navigate("/login");
       } catch (error) {
         // Handle any API request errors here
         console.error("API request error:", error);

@@ -18,9 +18,22 @@ export default function Login() {
     theme: "dark",
   };
   useEffect(() => {
-    // if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-    //   navigate("/");
-    // }
+    const fetchData = async () => {
+      const data = await JSON.parse(
+        localStorage.getItem("chat-app-user")
+      );
+  
+      // Check if isAvatarImageSet is true
+      if (data?.isAvatarImageSet) {
+        // Navigate to "/setAvatar"
+        navigate("/setAvatar");
+      } 
+      console.log("data",data)
+    };
+    
+  
+    fetchData();
+  
   }, []);
 
   const handleChange = (event) => {
@@ -51,12 +64,13 @@ export default function Login() {
         toast.error(data.msg, toastOptions);
       }
       if (data.status === true) {
-        // localStorage.setItem(
-        //   process.env.REACT_APP_LOCALHOST_KEY,
-        //   JSON.stringify(data.user)
-        // );
+        localStorage.setItem(
+          "chat-app-user",
+          JSON.stringify(data.user)
 
-        navigate("/");
+        );
+
+        navigate("/chat");
       }
     }
   };

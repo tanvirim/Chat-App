@@ -3,6 +3,8 @@ import { Routes } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
+
+import SetAvatar from './Components/SetAvatar'
 import Chat from './Pages/Chat'
 
 
@@ -17,6 +19,8 @@ function App() {
        <Route path="/register" element={<Register />} />
        <Route path="/login" element={<Login/>} />
        <Route path="/" element={<Chat />} />
+       <Route path="/setAvatar" element={<SetAvatar />} />
+       <Route path="/chat" element={<Chat/>} />
        </Routes>
        </BrowserRouter>
 
