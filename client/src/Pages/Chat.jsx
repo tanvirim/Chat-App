@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import { allUsersRoute, host } from "../utils/APIRoutes";
+import { allUsersRoute } from "../utils/APIRoutes";
 
 import Contacts from "../Components//Contacts"
 
@@ -38,7 +38,7 @@ export default function Chat() {
   
   useEffect(() => {
     if (currentUser) {
-      socket.current = io(host);
+      socket.current = io("http://localhost:8080");
       socket.current.emit("add-user", currentUser._id);
     }
   }, [currentUser]);
