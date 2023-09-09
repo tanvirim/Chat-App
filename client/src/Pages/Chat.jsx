@@ -38,7 +38,7 @@ export default function Chat() {
   
   useEffect(() => {
     if (currentUser) {
-      socket.current = io("http://localhost:8080");
+      socket.current = io("https://chat-app-noim.onrender.com");
       socket.current.emit("add-user", currentUser._id);
     }
   }, [currentUser]);
