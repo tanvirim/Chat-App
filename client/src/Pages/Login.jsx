@@ -57,20 +57,27 @@ export default function Login() {
         username,
         password,
       });
+      
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
-      }
-      if (data.status === true) {
-        localStorage.setItem(
-          "chat-app-user",
-          JSON.stringify(data.user)
-
-        );
-
-        navigate("/chat");
+      } else if (data.status === true) {
+        // Check if data.user exists and is not null or undefined
+        if (data.user) {
+          localStorage.setItem(
+            "chat-app-user",
+            JSON.stringify(data.user)
+          );
+          navigate("/chat");
+        } else {
+          // Handle the case where data.user is null or undefined
+          console.error("Data user is null or undefined");
+          // Optionally, you can display an error message to the user
+          toast.error("User data is missing", toastOptions);
+        }
       }
     }
   };
+  
 
   return (
     <>
