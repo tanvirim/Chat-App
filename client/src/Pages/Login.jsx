@@ -19,21 +19,18 @@ export default function Login() {
   };
   useEffect(() => {
     const fetchData = async () => {
-      const data = await JSON.parse(
-        localStorage.getItem("chat-app-user")
-      );
-  
-      // Check if isAvatarImageSet is true
-      if (data?.isAvatarImageSet) {
-        // Navigate to "/setAvatar"
-        navigate("/setAvatar");
-      } 
-      console.log("data",data)
+      const userData = localStorage.getItem("chat-app-user");
+      if (userData) {
+        const data = JSON.parse(userData);
+        // Check if isAvatarImageSet is true
+        if (data?.isAvatarImageSet) {
+          // Navigate to "/setAvatar"
+          navigate("/setAvatar");
+        }
+      }
     };
-    
   
     fetchData();
-  
   }, []);
 
   const handleChange = (event) => {
